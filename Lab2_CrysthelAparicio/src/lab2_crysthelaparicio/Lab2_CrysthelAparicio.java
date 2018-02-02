@@ -1,22 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lab2_crysthelaparicio;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author COPECO -13
- */
 public class Lab2_CrysthelAparicio {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         String estado = " ";
         String opcion = " ";
@@ -25,13 +13,11 @@ public class Lab2_CrysthelAparicio {
         while (!opcion.equalsIgnoreCase("f")) {
             opcion = JOptionPane.showInputDialog("Menu\n"
                     + "a- Agregar Detectives\n"
-                    + "b- Eliminar Detectives\n"
-                    + "c- Login in\n"
-                    + "d- Listar Casos Resueltos\n"
-                    + "e- Listar Casos Pendientes\n"
-                    + "f- Salir\n");
-            if (opcion.equals("a")) {
-
+                    + "b- Modificar Detectives\n"
+                    + "c- Eliminar in\n"
+                    + "d- Log In \n"
+                    + "e- Salir\n");
+            if (opcion.equalsIgnoreCase("a")) {
                 String nombre, nacion, usuario, contrasena;
                 int edad, a_lab, nivel;
                 nombre = (JOptionPane.showInputDialog("Ingrese su Nombre: "));
@@ -44,17 +30,19 @@ public class Lab2_CrysthelAparicio {
                 lista.add(new Detectives(nombre, edad, nacion, a_lab, nivel, usuario, contrasena));
 
             }
-            if (opcion.equals("b")) {
+            if (opcion.equalsIgnoreCase("b")) {
+
+            }
+            if (opcion.equalsIgnoreCase("c")) {
                 int p = Integer.parseInt(
                         JOptionPane.showInputDialog("Posicion de Detectice a Eliminar"));
                 lista.remove(p);
             }
-            if (opcion.equals("c")) {
+            if (opcion.equalsIgnoreCase("d")) {
                 String esp_us = (JOptionPane.showInputDialog("Ingrese su Usuario: "));
                 String esp_contra = (JOptionPane.showInputDialog("Ingrese su Contraseña: "));
                 for (int i = 0; i < lista.size(); i++) {
                     if (lista.get(i).getUsuario().equals(esp_us) && lista.get(i).getContrasena().equals(esp_contra)) {
-                        JOptionPane.showMessageDialog(null, "Entro");
                         String opcion1 = " ";
                         while (!opcion1.equalsIgnoreCase("i")) {
                             opcion1 = JOptionPane.showInputDialog(""
@@ -139,31 +127,35 @@ public class Lab2_CrysthelAparicio {
                 }
 
             }
-            if (opcion.equals("d")) {
-                if (estado.equalsIgnoreCase("Resuelto")) {
-                    String p1 = "";
-                    for (Object t1 : lista2) {
-                        if (t1 instanceof Casos) {
-                            p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
-                        }
 
-                    }
-                    JOptionPane.showMessageDialog(null, p1);
-                }
-            }
-            if (opcion.equals("e")){
-                if (estado.equalsIgnoreCase("Proceso")) {
-                    String p1 = "";
-                    for (Object t1 : lista2) {
-                        if (t1 instanceof Casos) {
-                            p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
-                        }
-
-                    }
-                    JOptionPane.showMessageDialog(null, p1);
-                }
+//            if (opcion.equalsIgnoreCase("e")) {
+//                if (estado.equalsIgnoreCase("Resuelto")) {
+//                    String p1 = "";
+//                    for (Object t1 : lista2) {
+//                        if (t1 instanceof Casos) {
+//                            p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
+//                        }
+//
+//                    }
+//                    JOptionPane.showMessageDialog(null, p1);
+//                }
+//            }
+//            if (opcion.equalsIgnoreCase("e")) {
+//                if (estado.equalsIgnoreCase("Proceso")) {
+//                    String p1 = "";
+//                    for (Object t1 : lista2) {
+//                        if (t1 instanceof Casos) {
+//                            p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
+//                        }
+//
+//                    }
+//                    JOptionPane.showMessageDialog(null, p1);
+//                }
+//            }
+//        }
+            if (opcion.equalsIgnoreCase("e")) {
+                System.exit(0);
             }
         }
     }
-
 }
