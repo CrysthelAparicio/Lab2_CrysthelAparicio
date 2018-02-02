@@ -9,13 +9,10 @@ package lab2_crysthelaparicio;
  *
  * @author COPECO -13
  */
-public class Lab2_CrysthelAparicio {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("Lab #2git ");
-    }
-    
+public class Casos {
+    private String lugar;
+    private String descripcion;
+    private String tipo_hom;
+    private String detec;
+    private String estado;
 }
