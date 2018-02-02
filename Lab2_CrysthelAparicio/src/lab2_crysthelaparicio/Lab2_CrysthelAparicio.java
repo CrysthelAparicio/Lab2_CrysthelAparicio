@@ -28,19 +28,57 @@ public class Lab2_CrysthelAparicio {
                 usuario = (JOptionPane.showInputDialog("Ingrese su Nuevo Usuario: "));
                 contrasena = (JOptionPane.showInputDialog("Ingrese su Nueva Contraseña: "));
                 lista.add(new Detectives(nombre, edad, nacion, a_lab, nivel, usuario, contrasena));
-
             }
+
             if (opcion.equalsIgnoreCase("b")) {
-
+                int pos1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un parametro a modificar: \n 0- Nombre ,"
+                        + " \n 1- Edad , "
+                        + "\n 2- Nacionalidad, "
+                        + "\n 3- Años Laborales, "
+                        + "\n 4- Nivel, \n 5- Usuario , "
+                        + "\n 6- Contraseña"));
+                if (pos1 >= 0 && pos1 < lista.size() && lista.get(pos1) instanceof Detectives) {
+                    if (pos1 == 0) {
+                        String nombre = JOptionPane.showInputDialog("Nuevo nombre");
+                        ((Detectives) lista.get(pos1)).setNombre(nombre);
+                    }
+                    if (pos1 == 1) {
+                        int edad = Integer.parseInt(JOptionPane.showInputDialog("nueva edad"));
+                        ((Detectives) lista.get(pos1)).setEdad(edad);
+                    }
+                    if (pos1 == 2) {
+                        String nacionalidad = JOptionPane.showInputDialog("nueva nacionalidad");
+                        ((Detectives) lista.get(pos1)).setNacionalidad(nacionalidad);
+                    }
+                    if (pos1 == 3) {
+                        int años = Integer.parseInt(JOptionPane.showInputDialog("nuevos años laborales"));
+                        ((Detectives) lista.get(pos1)).setAno_lab(años);
+                    }
+                    if (pos1 == 4) {
+                        int nivel = Integer.parseInt(JOptionPane.showInputDialog("nuevo nivel"));
+                        ((Detectives) lista.get(pos1)).setNivel(nivel);
+                    }
+                    if (pos1 == 7) {
+                        String usuario = JOptionPane.showInputDialog("nuevo usuario");
+                        ((Detectives) lista.get(pos1)).setUsuario(usuario);
+                    }
+                    if (pos1 == 8) {
+                        String contraseña = JOptionPane.showInputDialog("nueva contraseña");
+                        ((Detectives) lista.get(pos1)).setContrasena(contraseña);
+                    }
+                }
             }
+
             if (opcion.equalsIgnoreCase("c")) {
                 int p = Integer.parseInt(
                         JOptionPane.showInputDialog("Posicion de Detectice a Eliminar"));
                 lista.remove(p);
             }
+
             if (opcion.equalsIgnoreCase("d")) {
                 String esp_us = (JOptionPane.showInputDialog("Ingrese su Usuario: "));
                 String esp_contra = (JOptionPane.showInputDialog("Ingrese su Contraseña: "));
+
                 for (int i = 0; i < lista.size(); i++) {
                     if (lista.get(i).getUsuario().equals(esp_us) && lista.get(i).getContrasena().equals(esp_contra)) {
                         String opcion1 = " ";
@@ -74,14 +112,18 @@ public class Lab2_CrysthelAparicio {
                                 lista.get(pos).setUsuario(usuario);
                                 lista.get(pos).setContrasena(contrasena);
                             }
+
                             if (opcion1.equals("b")) {
                                 String p = "";
                                 for (Object t : lista) {
-                                    p += lista.indexOf(t) + " " + ((Detectives) t) + "\n";
-
+                                    if (t instanceof Detectives) {
+                                        p += lista.indexOf(t);
+                                        p += t + "\n";
+                                    }
                                 }
                                 JOptionPane.showMessageDialog(null, p);
                             }
+
                             if (opcion1.equals("c")) {
                                 String lugar, descripcion, tipo, detec, nombre, descripcion2, nivel2;
                                 lugar = (JOptionPane.showInputDialog("Ingrese Lugar: "));
@@ -96,6 +138,7 @@ public class Lab2_CrysthelAparicio {
                                 lista2.add(new Casos(lugar, descripcion, tipo, detec, estado));
                                 lista2.add(new Evidencia(nombre, descripcion2, nivel2));
                             }
+
                             if (opcion1.equals("d")) {//modifica sus casos
                                 int pos1 = Integer.parseInt(
                                         JOptionPane.showInputDialog("Ingrese la Posicion del Caso: "));
@@ -111,13 +154,13 @@ public class Lab2_CrysthelAparicio {
                                 ((Casos) lista2.get(pos1)).setDetec(detec);
                                 ((Casos) lista2.get(pos1)).setEstado(estado);
                             }
+
                             if (opcion1.equals("e")) {
                                 String p1 = "";
                                 for (Object t1 : lista2) {
                                     if (t1 instanceof Casos) {
                                         p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
                                     }
-
                                 }
                                 JOptionPane.showMessageDialog(null, p1);
                             }
@@ -125,34 +168,7 @@ public class Lab2_CrysthelAparicio {
                     }
 
                 }
-
             }
-
-//            if (opcion.equalsIgnoreCase("e")) {
-//                if (estado.equalsIgnoreCase("Resuelto")) {
-//                    String p1 = "";
-//                    for (Object t1 : lista2) {
-//                        if (t1 instanceof Casos) {
-//                            p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
-//                        }
-//
-//                    }
-//                    JOptionPane.showMessageDialog(null, p1);
-//                }
-//            }
-//            if (opcion.equalsIgnoreCase("e")) {
-//                if (estado.equalsIgnoreCase("Proceso")) {
-//                    String p1 = "";
-//                    for (Object t1 : lista2) {
-//                        if (t1 instanceof Casos) {
-//                            p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
-//                        }
-//
-//                    }
-//                    JOptionPane.showMessageDialog(null, p1);
-//                }
-//            }
-//        }
             if (opcion.equalsIgnoreCase("e")) {
                 System.exit(0);
             }
