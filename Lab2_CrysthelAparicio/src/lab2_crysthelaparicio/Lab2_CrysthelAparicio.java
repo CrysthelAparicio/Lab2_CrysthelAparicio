@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Lab2_CrysthelAparicio {
-
+    private static ArrayList<Mensaje> baseMensajes = new ArrayList();
     public static void main(String[] args) {
         String estado = " ";
         String opcion = " ";
+        String mensaje = "";
         ArrayList<Detectives> lista = new ArrayList();
         ArrayList lista2 = new ArrayList();
         while (!opcion.equalsIgnoreCase("f")) {
@@ -165,6 +166,20 @@ public class Lab2_CrysthelAparicio {
                                 }
                                 JOptionPane.showMessageDialog(null, p1);
                             }
+                            mensaje = mensajeria(esp_us);
+                            if(opcion1.equals("f")){
+                                
+                                System.out.println(mensaje);
+                            }
+                            if(opcion1.equals("g")){
+                                String p1 = "";
+                                for (Object t1 : lista2) {
+                                    if (t1 instanceof Casos) {
+                                        p1 += lista2.indexOf(t1) + " " + ((Casos) t1) + "\n";
+                                    }
+                                }
+                                JOptionPane.showMessageDialog(null, p1);
+                            }
                         }
                     }
 
@@ -176,11 +191,11 @@ public class Lab2_CrysthelAparicio {
         }
     }
     
-    private Iterable<Mensaje> baseMensajes;
+    //private Iterable<Mensaje> baseMensajes;
     
-     private void mensajeria(String emisor){
+     private static String mensajeria(String emisor){
         int opcion;
-        String mensajes;
+        String mensajes= "";
         do {
             opcion = Integer.parseInt(JOptionPane.showInputDialog("MENSAJERIA:\n"
                     + "1) Nuevo mensaje\n"
@@ -203,9 +218,10 @@ public class Lab2_CrysthelAparicio {
                     break;
             }
         } while (opcion != 0);
+        return mensajes;
     }
     
-    public String mostrarMensajes(String receptor, int importancia){
+    public static String mostrarMensajes(String receptor, int importancia){
         String output = "";
         for (Mensaje msj: baseMensajes){
             if (msj.getReceptor().equals(receptor) && msj.getImportancia() == importancia){
@@ -215,10 +231,10 @@ public class Lab2_CrysthelAparicio {
         return output;
     }
     
-    public void enviarMensaje(String emisor){
+    public static void enviarMensaje(String emisor){
         ArrayList<String> usuariosAgregados = new ArrayList<>(); 
         String detective = "";
-        Iterable<Mensaje> baseMensaje = null;
+        Iterable<Mensaje> baseMensaje = new ArrayList<>();
         for (Mensaje usuario: baseMensaje){
             if (!emisor.equals(usuario.getUsuario()) && !usuariosAgregados.contains(usuario.getUsuario())
                     && detectives(emisor, usuario.getUsuario())) {
@@ -226,7 +242,7 @@ public class Lab2_CrysthelAparicio {
                 detective += usuario + "\n";
             }
         }
-        String usuario = null;
+        String usuario = " ";
         String receptor = JOptionPane.showInputDialog("A que usuario le quiere enviar un mensaje?\n" + usuario);
         Mensaje msj = new Mensaje(emisor, receptor);
         msj.nuevoMensaje();
@@ -234,8 +250,8 @@ public class Lab2_CrysthelAparicio {
         
     }
 
-    private boolean detectives(String emisor, Object usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public static boolean detectives(String emisor, Object usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }
