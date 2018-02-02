@@ -8,7 +8,7 @@ public class Mensaje {
     private String emisor;
     private String receptor;
     private String cuerpo;
-    private int importancia; 
+    private int importancia;
 
     public Mensaje(String emisor, String receptor) {
         this.emisor = emisor;
@@ -37,6 +37,10 @@ public class Mensaje {
     public String toString() {
         return "Titulo: " + titulo + ", emisor: " + emisor + ", receptor: " + receptor
                 + ", cuerpo: " + cuerpo + ", importancia: " + importancia;
+    }
+
+    Object getUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

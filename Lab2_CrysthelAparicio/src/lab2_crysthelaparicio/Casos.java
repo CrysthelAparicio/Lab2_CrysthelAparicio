@@ -1,21 +1,23 @@
 package lab2_crysthelaparicio;
 
 public class Casos {
+
     private String lugar;
     private String descripcion;
     private String tipo_hom;
     private String detec;
     private String estado;
-    
-     public Casos(){
-        
+
+    public Casos() {
+
     }
-    public Casos(String lugar, String descripcion, String tipo_hom, String detec, String estado){
-        this.lugar=lugar;
-        this.descripcion=descripcion;
-        this.tipo_hom=tipo_hom;
-        this.detec=detec;
-        this.estado=estado;
+
+    public Casos(String lugar, String descripcion, String tipo_hom, String detec, String estado) {
+        this.lugar = lugar;
+        this.descripcion = descripcion;
+        this.tipo_hom = tipo_hom;
+        this.detec = detec;
+        this.estado = estado;
     }
 
     public void setLugar(String lugar) {

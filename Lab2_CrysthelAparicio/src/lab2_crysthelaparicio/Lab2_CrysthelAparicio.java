@@ -11,13 +11,15 @@ public class Lab2_CrysthelAparicio {
         ArrayList<Detectives> lista = new ArrayList();
         ArrayList lista2 = new ArrayList();
         while (!opcion.equalsIgnoreCase("f")) {
-            opcion = JOptionPane.showInputDialog("Menu\n"
+            opcion = JOptionPane.showInputDialog("MENU DETECTIVES F.B.I\n"
+                    + "Bienvenido al Sistema de Alta Seguridad, Ingrese una opcion\n"
                     + "a- Agregar Detectives\n"
                     + "b- Modificar Detectives\n"
-                    + "c- Eliminar in\n"
+                    + "c- Eliminar Detectives\n"
                     + "d- Log In \n"
                     + "e- Salir\n");
-            if (opcion.equalsIgnoreCase("a")) {
+            
+            if (opcion.equalsIgnoreCase("a")) { //Agrego los Detectives
                 String nombre, nacion, usuario, contrasena;
                 int edad, a_lab, nivel;
                 nombre = (JOptionPane.showInputDialog("Ingrese su Nombre: "));
@@ -30,7 +32,7 @@ public class Lab2_CrysthelAparicio {
                 lista.add(new Detectives(nombre, edad, nacion, a_lab, nivel, usuario, contrasena));
             }
 
-            if (opcion.equalsIgnoreCase("b")) {
+            if (opcion.equalsIgnoreCase("b")) { //Modifica los Detectives
                 int pos1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese un parametro a modificar: \n 0- Nombre ,"
                         + " \n 1- Edad , "
                         + "\n 2- Nacionalidad, "
@@ -131,7 +133,6 @@ public class Lab2_CrysthelAparicio {
                                 tipo = (JOptionPane.showInputDialog("Ingrese el Tipo de Caso[Homicidio,Robo,Secuestro,Violacion]: "));
                                 detec = (JOptionPane.showInputDialog("Ingrese el Detective a Cargo: "));
                                 estado = (JOptionPane.showInputDialog("Ingrese el Estado del Caso[Proceso, Resuelto]: "));
-//                                int evi=Integer.parseInt((JOptionPane.showInputDialog("Cuantos evidencias va a ingresar?: ")));
                                 nombre = (JOptionPane.showInputDialog("Ingrese Nombre de Evidencia: "));
                                 descripcion2 = (JOptionPane.showInputDialog("Ingrese Descripcion de Evidencia: "));
                                 nivel2 = (JOptionPane.showInputDialog("Ingrese Nivel de Evidencia: "));
@@ -174,4 +175,67 @@ public class Lab2_CrysthelAparicio {
             }
         }
     }
+    
+    private Iterable<Mensaje> baseMensajes;
+    
+     private void mensajeria(String emisor){
+        int opcion;
+        String mensajes;
+        do {
+            opcion = Integer.parseInt(JOptionPane.showInputDialog("MENSAJERIA:\n"
+                    + "1) Nuevo mensaje\n"
+                    + "2) Buzon\n"
+                    + "0) Volver"));
+            switch(opcion) {
+                case 1:
+                    enviarMensaje(emisor);
+                    break;
+                case 2:
+                    mensajes = "";
+                    for (int i = 3; i > 0; i--)
+                        mensajes += mostrarMensajes(emisor, i);
+                    JOptionPane.showMessageDialog(null, mensajes);
+                    break;
+                case 0:
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion no valida!");
+                    break;
+            }
+        } while (opcion != 0);
+    }
+    
+    public String mostrarMensajes(String receptor, int importancia){
+        String output = "";
+        for (Mensaje msj: baseMensajes){
+            if (msj.getReceptor().equals(receptor) && msj.getImportancia() == importancia){
+                output += msj + "\n";
+            }
+        }
+        return output;
+    }
+    
+    public void enviarMensaje(String emisor){
+        ArrayList<String> usuariosAgregados = new ArrayList<>(); 
+        String detective = "";
+        Iterable<Mensaje> baseMensaje = null;
+        for (Mensaje usuario: baseMensaje){
+            if (!emisor.equals(usuario.getUsuario()) && !usuariosAgregados.contains(usuario.getUsuario())
+                    && detectives(emisor, usuario.getUsuario())) {
+                usuariosAgregados.add((String) usuario.getUsuario());
+                detective += usuario + "\n";
+            }
+        }
+        String usuario = null;
+        String receptor = JOptionPane.showInputDialog("A que usuario le quiere enviar un mensaje?\n" + usuario);
+        Mensaje msj = new Mensaje(emisor, receptor);
+        msj.nuevoMensaje();
+        baseMensajes.add(msj);
+        
+    }
+
+    private boolean detectives(String emisor, Object usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
