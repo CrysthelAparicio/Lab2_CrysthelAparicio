@@ -1,4 +1,4 @@
-# Lab3_CrysthelAparicio
+# Lab2_CrysthelAparicio
 Laboratorio #2 de Programación 2
 
 Comenzando
